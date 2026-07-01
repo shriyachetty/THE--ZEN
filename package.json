@@ -1,0 +1,13 @@
+{
+  "name": "the-zen",
+  "version": "1.0.0",
+  "description": "Mobile-first streetwear ecommerce site for The Zen hoodie brand.",
+  "private": true,
+  "scripts": {
+    "start": "http-server . -p 3000",
+    "start:https": "http-server . -p 3000 -S"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

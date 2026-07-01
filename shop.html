@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | The Zen</title>
+  <meta name="description" content="Browse the premium hoodie collection with filters for color, size, price, and sorting. Find the perfect streetwear piece.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="shop">
+  <header class="site-nav">
+    <div class="container">
+      <a class="site-brand" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/></svg>
+        <strong>The Zen</strong>
+      </a>
+      <nav class="site-links">
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="site-actions">
+        <a class="btn btn-ghost" href="admin.html">Admin</a>
+        <a class="btn btn-secondary" href="cart.html">Cart <span class="nav-cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="page-header">
+        <div>
+          <h1>Shop hoodies</h1>
+          <p class="section-copy">Filter the collection by size, color, and price to discover the right style for your wardrobe.</p>
+        </div>
+        <a class="btn btn-primary" href="product.html">Featured product</a>
+      </div>
+      <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Search hoodies, colors, styles">
+        <select id="sort-select" class="sort-select">
+          <option value="new">Newest arrivals</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="name">Alphabetical</option>
+        </select>
+      </div>
+      <div class="admin-grid">
+        <aside class="filter-panel">
+          <div class="filter-group">
+            <label>Color</label>
+            <label><input type="checkbox" name="filter-color" value="Black"> Black</label>
+            <label><input type="checkbox" name="filter-color" value="Charcoal"> Charcoal</label>
+            <label><input type="checkbox" name="filter-color" value="White"> White</label>
+          </div>
+          <div class="filter-group">
+            <label>Size</label>
+            <label><input type="checkbox" name="filter-size" value="XS"> XS</label>
+            <label><input type="checkbox" name="filter-size" value="S"> S</label>
+            <label><input type="checkbox" name="filter-size" value="M"> M</label>
+            <label><input type="checkbox" name="filter-size" value="L"> L</label>
+            <label><input type="checkbox" name="filter-size" value="XL"> XL</label>
+          </div>
+          <div class="filter-group">
+            <label>Max price <span id="filter-price-label">$120</span></label>
+            <input id="filter-price" type="range" min="40" max="150" value="120">
+          </div>
+        </aside>
+        <section class="product-grid" id="shop-grid"></section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>The Zen</h3>
+        <p>Streetwear essentials with premium attitude, ready for every look.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <nav>
+          <a href="index.html">Home</a><br>
+          <a href="shop.html">Shop</a><br>
+          <a href="admin.html">Admin</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Follow</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 4.6a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8zm6.8-.7a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 8.8a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 2v11.06A4.94 4.94 0 0 0 7 12a5 5 0 1 0 5 5V8h4V4h-4V2H9z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 2h3v4h-3v3h3v4h-3v9h-5v-9H8V9h2V6a3 3 0 0 1 3-3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

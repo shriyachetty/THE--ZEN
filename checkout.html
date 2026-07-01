@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | The Zen</title>
+  <meta name="description" content="Checkout page with customer information, shipping details, and payment placeholder fields.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="checkout">
+  <header class="site-nav">
+    <div class="container">
+      <a class="site-brand" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/></svg>
+        <strong>The Zen</strong>
+      </a>
+      <nav class="site-links">
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="site-actions">
+        <a class="btn btn-ghost" href="admin.html">Admin</a>
+        <a class="btn btn-secondary" href="cart.html">Cart <span class="nav-cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container checkout-panel">
+      <div class="page-header">
+        <div>
+          <h1>Checkout</h1>
+          <p class="section-copy">Secure checkout placeholder. Enter shipping details and confirm your order.</p>
+        </div>
+      </div>
+      <form id="checkout-form" class="form-grid">
+        <div>
+          <label for="name">Full name</label>
+          <input type="text" name="name" id="name" placeholder="Your name" required>
+        </div>
+        <div>
+          <label for="email">Email address</label>
+          <input type="email" name="email" id="email" placeholder="name@example.com" required>
+        </div>
+        <div>
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" placeholder="123 street name" required>
+        </div>
+        <div>
+          <label for="city">City</label>
+          <input type="text" name="city" id="city" placeholder="City" required>
+        </div>
+        <div>
+          <label for="state">State / Region</label>
+          <input type="text" name="state" id="state" placeholder="State" required>
+        </div>
+        <div>
+          <label for="zip">ZIP / postal code</label>
+          <input type="text" name="zip" id="zip" placeholder="12345" required>
+        </div>
+        <div>
+          <label for="notes">Order notes</label>
+          <textarea name="notes" id="notes" rows="4" placeholder="Gift note or delivery instructions"></textarea>
+        </div>
+        <div>
+          <label for="payment-method">Payment</label>
+          <select id="payment-method" name="payment-method">
+            <option value="card">Credit / debit card</option>
+            <option value="placeholder">Placeholder integration</option>
+          </select>
+        </div>
+        <div>
+          <label for="card-number">Card number</label>
+          <input id="card-number" type="text" placeholder="0000 0000 0000 0000" disabled>
+        </div>
+        <div>
+          <label for="expiry">Expiry</label>
+          <input id="expiry" type="text" placeholder="MM / YY" disabled>
+        </div>
+        <div>
+          <label for="cvc">CVC</label>
+          <input id="cvc" type="text" placeholder="123" disabled>
+        </div>
+        <button class="btn btn-primary" type="submit">Place order</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>The Zen</h3>
+        <p>Fast checkout experience with secure placeholder payment integration ready for real gateway setup.</p>
+      </div>
+      <div>
+        <h3>More</h3>
+        <nav>
+          <a href="shop.html">Shop</a><br>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <h3>Follow</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 4.6a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8zm6.8-.7a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 8.8a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 2v11.06A4.94 4.94 0 0 0 7 12a5 5 0 1 0 5 5V8h4V4h-4V2H9z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 2h3v4h-3v3h3v4h-3v9h-5v-9H8V9h2V6a3 3 0 0 1 3-3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
