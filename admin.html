@@ -4,144 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard | The Zen</title>
-  <meta name="description" content="Admin dashboard for managing products, inventory, orders, and customer data.">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Private admin dashboard for managing the storefront.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body.admin-page {
+      background: #06070b;
+      color: #f5f5f5;
+    }
+
+    .admin-shell {
+      min-height: 100vh;
+      padding: 2rem 0 4rem;
+    }
+
+    .admin-card {
+      max-width: 480px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.24);
+    }
+
+    .admin-card h1,
+    .admin-card h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .admin-card form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .admin-card input {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .admin-card .error {
+      color: #ff8d8d;
+      min-height: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .admin-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+  </style>
 </head>
-<body data-page="admin">
-  <header class="site-nav">
+<body class="admin-page" data-page="admin">
+  <div class="admin-shell">
     <div class="container">
-      <a class="site-brand" href="index.html">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/></svg>
-        <strong>The Zen</strong>
-      </a>
-      <nav class="site-links">
-        <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
-      <div class="site-actions">
-        <a class="btn btn-secondary" href="cart.html">Cart <span class="nav-cart-count">0</span></a>
-      </div>
-    </div>
-  </header>
-
-  <main class="section">
-    <div class="container">
-      <div class="page-header">
-        <div>
-          <h1>Admin dashboard</h1>
-          <p class="section-copy">Manage products, inventory, orders, customers, and upload content directly within the store.</p>
-        </div>
-      </div>
-      <section class="section white">
-        <div class="page-header">
+      <div id="admin-login-view" class="admin-card" hidden>
+        <p class="eyebrow">Private access</p>
+        <h1>Admin sign in</h1>
+        <p class="section-copy">Use the direct admin URL to continue. Access is protected by a simple local gate for this static storefront.</p>
+        <form id="admin-login-form">
           <div>
-            <h2>Update products</h2>
-            <p class="section-copy">Add new hoodies, edit inventory, and keep the shop fresh.</p>
-          </div>
-        </div>
-        <form id="admin-add-product" class="form-grid">
-          <div>
-            <label for="name">Product name</label>
-            <input type="text" name="name" id="name" placeholder="Product name" required>
+            <label for="admin-username">Username</label>
+            <input id="admin-username" name="username" type="text" autocomplete="username" required>
           </div>
           <div>
-            <label for="description">Description</label>
-            <textarea name="description" id="description" rows="3" placeholder="Product description"></textarea>
+            <label for="admin-password">Password</label>
+            <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
           </div>
-          <div>
-            <label for="price">Price</label>
-            <input type="number" name="price" id="price" placeholder="Price" required>
-          </div>
-          <div>
-            <label for="inventory">Inventory</label>
-            <input type="number" name="inventory" id="inventory" placeholder="Stock quantity" required>
-          </div>
-          <div>
-            <label for="sizes">Sizes</label>
-            <input type="text" name="sizes" id="sizes" placeholder="S, M, L, XL">
-          </div>
-          <div>
-            <label for="colors">Colors</label>
-            <input type="text" name="colors" id="colors" placeholder="Black, Charcoal, White">
-          </div>
-          <div>
-            <label for="image-url">Image URL</label>
-            <input type="text" name="image-url" id="image-url" placeholder="assets/hoodie-1.svg or remote URL">
-          </div>
-          <div>
-            <label for="product-image">Upload image</label>
-            <input type="file" name="product-image" id="product-image" accept="image/*">
-          </div>
-          <div>
-            <label>
-              <input type="checkbox" name="featured"> Featured
-            </label>
-          </div>
-          <div>
-            <label>
-              <input type="checkbox" name="newArrival"> New arrival
-            </label>
-          </div>
-          <button class="btn btn-primary" type="submit">Save product</button>
+          <p id="admin-login-error" class="error" hidden></p>
+          <button class="btn btn-primary" type="submit">Enter dashboard</button>
         </form>
-      </section>
+      </div>
 
-      <section class="section dark">
+      <div id="admin-dashboard-view" hidden>
+        <div class="admin-toolbar">
+          <div>
+            <p class="eyebrow">Secure admin</p>
+            <h1>Admin dashboard</h1>
+          </div>
+          <button id="admin-logout" class="btn btn-secondary" type="button">Logout</button>
+        </div>
+
         <div class="page-header">
           <div>
-            <h2>Product inventory</h2>
-            <p class="section-copy">Quick product overview and editable inventory details.</p>
+            <h2>Manage products, inventory, orders, and customers</h2>
+            <p class="section-copy">Only the direct admin URL exposes this dashboard. Keep this page private and do not link to it from the storefront.</p>
           </div>
         </div>
-        <div id="admin-products" class="feature-grid"></div>
-      </section>
 
-      <section class="section white">
-        <div class="page-header">
-          <div>
-            <h2>Orders</h2>
-            <p class="section-copy">Review incoming orders and customer details.</p>
+        <section class="section white">
+          <div class="page-header">
+            <div>
+              <h2>Update products</h2>
+              <p class="section-copy">Add new hoodies, edit inventory, and keep the shop fresh.</p>
+            </div>
           </div>
-        </div>
-        <div id="admin-orders" class="feature-grid"></div>
-      </section>
+          <form id="admin-add-product" class="form-grid">
+            <div>
+              <label for="name">Product name</label>
+              <input type="text" name="name" id="name" placeholder="Product name" required>
+            </div>
+            <div>
+              <label for="description">Description</label>
+              <textarea name="description" id="description" rows="3" placeholder="Product description"></textarea>
+            </div>
+            <div>
+              <label for="price">Price</label>
+              <input type="number" name="price" id="price" placeholder="Price" required>
+            </div>
+            <div>
+              <label for="inventory">Inventory</label>
+              <input type="number" name="inventory" id="inventory" placeholder="Stock quantity" required>
+            </div>
+            <div>
+              <label for="sizes">Sizes</label>
+              <input type="text" name="sizes" id="sizes" placeholder="S, M, L, XL">
+            </div>
+            <div>
+              <label for="colors">Colors</label>
+              <input type="text" name="colors" id="colors" placeholder="Black, Charcoal, White">
+            </div>
+            <div>
+              <label for="image-url">Image URL</label>
+              <input type="text" name="image-url" id="image-url" placeholder="assets/hoodie-1.svg or remote URL">
+            </div>
+            <div>
+              <label for="product-image">Upload image</label>
+              <input type="file" name="product-image" id="product-image" accept="image/*">
+            </div>
+            <div>
+              <label>
+                <input type="checkbox" name="featured"> Featured
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox" name="newArrival"> New arrival
+              </label>
+            </div>
+            <button class="btn btn-primary" type="submit">Save product</button>
+          </form>
+        </section>
 
-      <section class="section dark">
-        <div class="page-header">
-          <div>
-            <h2>Customers</h2>
-            <p class="section-copy">Monitor customer activity and order history at a glance.</p>
+        <section class="section dark">
+          <div class="page-header">
+            <div>
+              <h2>Product inventory</h2>
+              <p class="section-copy">Quick product overview and editable inventory details.</p>
+            </div>
           </div>
-        </div>
-        <div id="admin-customers" class="feature-grid"></div>
-      </section>
+          <div id="admin-products" class="feature-grid"></div>
+        </section>
+
+        <section class="section white">
+          <div class="page-header">
+            <div>
+              <h2>Orders</h2>
+              <p class="section-copy">Review incoming orders and customer details.</p>
+            </div>
+          </div>
+          <div id="admin-orders" class="feature-grid"></div>
+        </section>
+
+        <section class="section dark">
+          <div class="page-header">
+            <div>
+              <h2>Customers</h2>
+              <p class="section-copy">Monitor customer activity and order history at a glance.</p>
+            </div>
+          </div>
+          <div id="admin-customers" class="feature-grid"></div>
+        </section>
+      </div>
     </div>
-  </main>
+  </div>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <h3>The Zen</h3>
-        <p>Local admin controls for managing the storefront and product catalog.</p>
-      </div>
-      <div>
-        <h3>Quick actions</h3>
-        <nav>
-          <a href="shop.html">View shop</a><br>
-          <a href="index.html">Home</a>
-        </nav>
-      </div>
-      <div>
-        <h3>Social</h3>
-        <nav>
-          <a href="#">Instagram</a><br>
-          <a href="#">TikTok</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
-  <script src="js/app.js"></script>
+  <script>
+    const ADMIN_USERNAME = 'admin';
+    const ADMIN_PASSWORD = 'zen2026';
+    const AUTH_KEY = 'thezen-admin-auth';
+
+    function showAdminView(view) {
+      const loginView = document.getElementById('admin-login-view');
+      const dashboardView = document.getElementById('admin-dashboard-view');
+      if (view === 'dashboard') {
+        loginView.hidden = true;
+        dashboardView.hidden = false;
+      } else {
+        loginView.hidden = false;
+        dashboardView.hidden = true;
+      }
+    }
+
+    function isAuthenticated() {
+      return sessionStorage.getItem(AUTH_KEY) === 'true';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('admin-login-form');
+      const errorMessage = document.getElementById('admin-login-error');
+      const logoutButton = document.getElementById('admin-logout');
+
+      if (isAuthenticated()) {
+        showAdminView('dashboard');
+      } else {
+        showAdminView('login');
+      }
+
+      loginForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const username = document.getElementById('admin-username').value.trim();
+        const password = document.getElementById('admin-password').value;
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+          sessionStorage.setItem(AUTH_KEY, 'true');
+          errorMessage.hidden = true;
+          showAdminView('dashboard');
+        } else {
+          errorMessage.hidden = false;
+          errorMessage.textContent = 'Incorrect username or password.';
+        }
+      });
+
+      logoutButton?.addEventListener('click', () => {
+        sessionStorage.removeItem(AUTH_KEY);
+        loginForm.reset();
+        errorMessage.hidden = true;
+        showAdminView('login');
+      });
+    });
+  </script>
+  <script>
+    (function () {
+      const pathname = window.location.pathname.replace(/\/+$/, '');
+      const basePath = pathname.includes('/THE--ZEN') ? '/THE--ZEN/' : '/';
+      document.write('<script src="' + basePath + 'js/app.js"><\/script>');
+    })();
+  </script>
 </body>
 </html>
