@@ -590,7 +590,7 @@ header,
 .js-header-wrapper,
 .AppHeader,
 #gh-header {
-  display: none !important;
+  display:invisible !important;
 }
 
 .badge-pill {
