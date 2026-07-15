@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from urllib.parse import urlparse
 
+
 # Change to hoodies directory
 os.chdir(r'C:\Users\shriy\OneDrive\Documents\hoodies')
 
