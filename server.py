@@ -27,6 +27,7 @@ class RestrictedHandler(http.server.SimpleHTTPRequestHandler):
             return
         super().do_GET()
 
+
 # Start HTTPS server
 port = 3000
 handler = RestrictedHandler
