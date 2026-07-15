@@ -3,6 +3,7 @@ import http.server
 import ssl
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 # Change to hoodies directory
 os.chdir(r'C:\Users\shriy\OneDrive\Documents\hoodies')
@@ -15,9 +16,19 @@ if not os.path.exists(cert_file) or not os.path.exists(key_file):
     print("Generating self-signed certificate...")
     os.system(f'python -m ssl --cert {cert_file} --key {key_file}')
 
+class RestrictedHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        parsed_path = urlparse(self.path)
+        if parsed_path.path.rstrip('/') in {'/admin', '/admin.html'}:
+            self.send_response(302)
+            self.send_header('Location', '/index.html')
+            self.end_headers()
+            return
+        super().do_GET()
+
 # Start HTTPS server
 port = 3000
-handler = http.server.SimpleHTTPRequestHandler
+handler = RestrictedHandler
 
 # Create SSL context
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
