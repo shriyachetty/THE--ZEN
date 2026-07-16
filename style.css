@@ -584,14 +584,6 @@ label {
     border-radius: 22px;
   }
 }
-/* Hide GitHub top header */
-header,
-.Header,
-.js-header-wrapper,
-.AppHeader,
-#gh-header {
-  display:invisible !important;
-}
 
 .badge-pill {
   border-radius: 999px;
