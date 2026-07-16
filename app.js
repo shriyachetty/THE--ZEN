@@ -783,12 +783,6 @@ function initPage() {
   initStorage();
   initUI();
   const page = document.body.dataset.page;
-
-  if (page === 'admin') {
-    window.location.replace('index.html');
-    return;
-  }
-
   switch (page) {
     case 'home':
       renderHomeSections();
