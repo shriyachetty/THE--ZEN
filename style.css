@@ -123,6 +123,7 @@ button {
 .site-links a {
   color: var(--text);
   font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .site-actions {
