@@ -111,6 +111,7 @@ button {
 
 .site-brand strong {
   letter-spacing: 0.06em;
+  font-weight: 700;
 }
 
 .site-links {
@@ -120,7 +121,9 @@ button {
   align-items: center;
 }
 
-.site-links a {
+.site-links a,
+.footer a,
+.footer nav a {
   color: var(--text);
   font-size: 0.95rem;
   font-weight: 700;
