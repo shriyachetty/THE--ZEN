@@ -6,6 +6,7 @@
   <title>Admin Dashboard | The Zen</title>
   <meta name="description" content="Private admin dashboard for managing the storefront.">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="refresh" content="0; url=index.html">
   <link rel="stylesheet" href="./style.css">
   <style>
     body.admin-page {
@@ -18,7 +19,6 @@
       padding: 2rem 0 4rem;
     }
 
-  
     .admin-card {
       max-width: 480px;
       margin: 3rem auto;
@@ -36,7 +36,7 @@
     }
 
     .admin-card form {
-      display:invisible;
+      display: invisible;
       gap: 1rem;
       margin-top: 1.25rem;
     }
@@ -65,6 +65,9 @@
   </style>
 </head>
 <body class="admin-page" data-page="admin">
+  <script>
+    window.location.replace('index.html');
+  </script>
   <div class="admin-shell">
     <div class="container">
       <div id="admin-login-view" class="admin-card" hidden>
