@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | The Zen</title>
   <meta name="description" content="Learn about our brand story, mission, and team behind the premium hoodie collections.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet " href="style.css">
+  
 </head>
 <body data-page="about">
   <header class="site-nav">
@@ -21,7 +22,7 @@
         <a href="faq.html">FAQ</a>
       </nav>
       <div class="site-actions">
-        <a class="btn btn-ghost" href="admin.html">Admin</a>
+        <span class="btn btn-ghost" aria-hidden="true"></span>
         <a class="btn btn-secondary" href="cart.html">Cart <span class="nav-cart-count">0</span></a>
       </div>
     </div>
@@ -62,6 +63,12 @@
       </div>
     </div>
   </footer>
-  <script src="js/app.js"></script>
+  <script>
+    (function () {
+      const pathname = window.location.pathname.replace(/\/+$/, '');
+      const basePath = pathname.includes('/THE--ZEN') ? '/THE--ZEN/' : '/';
+      document.write('<script src="' + basePath + 'js/app.js"><\/script>');
+    })();
+  </script>
 </body>
 </html>
