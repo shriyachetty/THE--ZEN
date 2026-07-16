@@ -224,8 +224,7 @@ button {
 .feature-grid,
 .product-grid,
 .review-grid,
-.related-grid,
-.admin-grid {
+.related-grid {
   display: grid;
   gap: 1.25rem;
 }

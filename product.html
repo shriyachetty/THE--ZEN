@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product | The Zen</title>
   <meta name="description" content="Detailed hoodie product page with multiple images, size and color selectors, and wishlist and cart features.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body data-page="product">
   <header class="site-nav">
@@ -21,7 +21,7 @@
         <a href="faq.html">FAQ</a>
       </nav>
       <div class="site-actions">
-        <a class="btn btn-ghost" href="admin.html">Admin</a>
+        <span class="btn btn-ghost" aria-hidden="true"></span>
         <a class="btn btn-secondary" href="cart.html">Cart <span class="nav-cart-count">0</span></a>
       </div>
     </div>
@@ -35,7 +35,7 @@
           <h1 id="product-title">Premium Hoodie</h1>
         </div>
       </div>
-      <div class="admin-grid">
+      <div>
         <div class="hero-card" id="product-images"></div>
         <div class="newsletter">
           <p class="form-copy">Designed for layering, movement, and premium comfort. Choose your size, color, and quantity below.</p>
@@ -103,6 +103,12 @@
       </div>
     </div>
   </footer>
-  <script src="js/app.js"></script>
+  <script>
+    (function () {
+      const pathname = window.location.pathname.replace(/\/+$/, '');
+      const basePath = pathname.includes('/THE--ZEN') ? '/THE--ZEN/' : '/';
+      document.write('<script src="' + basePath + 'js/app.js"><\/script>');
+    })();
+  </script>
 </body>
 </html>
